@@ -1,0 +1,568 @@
+/* 기본 리셋 및 공통 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+    /* 커스텀 커서 */
+}
+
+body {
+    background-color: #050505;
+    font-family: 'Noto Sans KR', sans-serif;
+    overflow-x: hidden;
+}
+
+/* 폰트 및 컬러 변수 */
+:root {
+    --pink: #ff1493;
+    --dark: #050505;
+    --light: #ffffff;
+    --gray: #888888;
+}
+
+.giant-text {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 11vw;
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+}
+
+.section-num {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 14px;
+    color: var(--pink);
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* 배경 테마 클래스 */
+.dark-bg {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.pink-bg {
+    background-color: var(--pink);
+    color: var(--dark);
+}
+
+/* =========================================
+   커스텀 커서
+   ========================================= */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: var(--light);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.custom-cursor.active {
+    width: 60px;
+    height: 60px;
+}
+
+/* =========================================
+   네비게이션
+   ========================================= */
+.top-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 30px 5vw;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    mix-blend-mode: difference;
+    color: var(--light);
+}
+
+.nav-brand {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-brand span {
+    color: var(--pink);
+}
+
+.nav-links span {
+    margin-left: 30px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-family: 'Syncopate', sans-serif;
+}
+
+/* =========================================
+   HERO 섹션
+   ========================================= */
+.section-hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15vh 5vw 5vh 5vw;
+}
+
+.eyebrow {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: var(--gray);
+}
+
+/* =========================================
+   MARQUEE 섹션
+   ========================================= */
+.section-marquee {
+    padding: 25px 0;
+    overflow: hidden;
+    border-top: 2px solid var(--dark);
+    border-bottom: 2px solid var(--dark);
+}
+
+.marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marqueeScroll 20s linear infinite;
+    font-family: 'Syncopate', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* =========================================
+   ABOUT 섹션 (Split Layout)
+   ========================================= */
+.section-about {
+    padding: 15vh 5vw;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+}
+
+.about-left h2 {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 5vw;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.about-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lead-text {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.body-text {
+    font-size: 18px;
+    color: var(--gray);
+    line-height: 1.8;
+}
+
+/* ─ 제공해주신 유리 질감 버튼 코드 완벽 이식 ─ */
+.container .btn {
+    position: relative;
+    width: 160px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .btn a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    overflow: hidden;
+    color: #fff;
+    font-weight: 700;
+    z-index: 1;
+    transition: 0.5s;
+    backdrop-filter: blur(15px);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+}
+
+.container .btn:hover a {
+    letter-spacing: 3px;
+}
+
+.container .btn a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+    transform: skewX(45deg) translate(0);
+    transition: 0.5s;
+}
+
+.container .btn:hover a::before {
+    transform: skewX(45deg) translate(200px);
+}
+
+.container .btn::before,
+.container .btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    width: 30px;
+    height: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+    background: #ff1f71;
+    box-shadow: 0 0 5px #ff1f71, 0 0 15px #ff1f71, 0 0 30px #ff1f71;
+}
+
+.container .btn::before {
+    bottom: -5px;
+}
+
+.container .btn::after {
+    top: -5px;
+}
+
+.container .btn:hover::before,
+.container .btn:hover::after {
+    height: 50%;
+    width: 80%;
+    border-radius: 30px;
+}
+
+.container .btn:hover::before {
+    bottom: 0;
+}
+
+.container .btn:hover::after {
+    top: 0;
+}
+
+
+/* =========================================
+   SKILLS 방사형 3D 섹션 (3번째 사진 참고)
+   ========================================= */
+.section-skills-radial {
+    position: relative;
+    height: 120vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.radial-container {
+    position: relative;
+    width: 1000px;
+    height: 800px;
+    max-width: 100vw;
+}
+
+/* 중앙 3D 구체 */
+.center-3d {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#three-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+.center-text {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--light);
+    z-index: 10;
+    text-shadow: 0 0 20px var(--pink);
+    pointer-events: none;
+}
+
+/* SVG 방사형 선 */
+.connecting-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.connecting-lines line {
+    stroke: rgba(255, 20, 147, 0.5);
+    stroke-width: 1.5;
+    stroke-dasharray: 4px;
+}
+
+/* 점선 연출 */
+
+/* 주변 스킬 노드 */
+.node {
+    position: absolute;
+    z-index: 10;
+    text-align: left;
+}
+
+.node h3 {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 16px;
+    color: var(--pink);
+    margin-bottom: 5px;
+}
+
+.node p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--light);
+    font-weight: 600;
+}
+
+.node-tl {
+    top: 120px;
+    left: 0;
+    text-align: right;
+}
+
+.node-cl {
+    top: 370px;
+    left: -50px;
+    text-align: right;
+}
+
+.node-bl {
+    top: 620px;
+    left: 0;
+    text-align: right;
+}
+
+.node-tr {
+    top: 120px;
+    right: 0;
+}
+
+.node-cr {
+    top: 370px;
+    right: -50px;
+}
+
+.node-br {
+    top: 620px;
+    right: 0;
+}
+
+/* =========================================
+   STRENGTHS 접힌 카드 섹션 (5번째 사진 참고)
+   ========================================= */
+.section-strengths {
+    padding: 15vh 5vw;
+    border-top: 1px solid var(--dark);
+}
+
+.strengths-header {
+    margin-bottom: 80px;
+}
+
+.cards-wrapper {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 40px;
+    scrollbar-width: none;
+    /* 파이어폭스 스크롤바 숨김 */
+}
+
+.cards-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* 크롬 스크롤바 숨김 */
+
+/* 카드 본체 (화이트 배경 + 보라색 테두리 연출) */
+.folded-card {
+    min-width: 320px;
+    height: 400px;
+    background: var(--light);
+    border: 2px solid #e0c3fc;
+    border-radius: 16px;
+    position: relative;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s ease;
+}
+
+.folded-card:hover {
+    transform: translateY(-10px);
+}
+
+/* 우측 상단 접힌 효과 (Grid 무늬 + 펀치 홀) */
+.card-fold {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 80px;
+    height: 80px;
+    background-color: #fce7f3;
+    /* 옅은 핑크 */
+    background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px);
+    background-size: 15px 15px;
+    /* 격자 무늬 */
+    border-bottom-left-radius: 16px;
+    border-left: 2px solid #e0c3fc;
+    border-bottom: 2px solid #e0c3fc;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 폴드 안의 동그란 펀치 구멍 */
+.card-fold::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--light);
+    border-radius: 50%;
+    border: 2px solid #e0c3fc;
+}
+
+/* 카드의 우측 상단 둥근 모서리를 가리기 위한 트릭 */
+.folded-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 80px;
+    height: 80px;
+    background: var(--pink);
+    z-index: 1;
+}
+
+.card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.card-desc {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.6;
+}
+
+/* =========================================
+   푸터
+   ========================================= */
+.section-footer {
+    padding: 10vh 5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-link {
+    font-family: 'Syncopate', sans-serif;
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-copy {
+    font-family: 'Inter', sans-serif;
+    color: var(--gray);
+    font-size: 12px;
+    margin-top: auto;
+}
+
+/* Reveal 애니메이션 */
+.reveal-text {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .radial-container {
+        transform: scale(0.6);
+    }
+
+    .giant-text {
+        font-size: 15vw;
+    }
+}
