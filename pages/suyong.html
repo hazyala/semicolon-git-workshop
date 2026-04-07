@@ -15,20 +15,58 @@
             justify-content: center;
             padding: 50px 20px;
         }
-        .profile-container {
-            max-width: 600px;
-            width: 100%;
-            background: #2d2d2d;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .header {
-            text-align: center;
-            border-bottom: 1px solid #444;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
+        .profile-container 
+/* style.css 또는 <style> 태그 안 */
+.profile-container {
+    max-width: 600px;
+    width: 100%;
+    /* 1. 배경을 미세한 그라데이션으로 변경 */
+    background: linear-gradient(145deg, #2d2d2d, #252525);
+    /* 2. 테두리를 살짝 넣어서 더 깔끔하게 */
+    border: 1px solid #3d3d3d;
+    border-radius: 15px;
+    padding: 30px;
+    /* 3. 그림자를 더 부드럽고 깊게 */
+    box-shadow: 10px 10px 30px #1a1a1a, -10px -10px 30px #262626;
+    /* 4. 등장할 때 스윽 나타나는 애니메이션 (옵션) */
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+       /* 헤더 전체 레이아웃 (가로 정렬) */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+    text-align: left; 
+    border-bottom: 1px solid #444;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    /* 아까 만든 fadeIn 애니메이션 적용 */
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* 이미지 동그란 박스 */
+.profile-pic-wrapper {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    background: #3a3a3a;
+    border-radius: 50%;
+    border: 3px solid #007aff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* 텍스트 영역 */
+.profile-info {
+    flex: 1;
+}
         .name {
             font-size: 2rem;
             margin: 10px 0;
@@ -58,6 +96,21 @@
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .profile-img {
+    width: 100%;      /* 부모 박스 너비에 맞춤 */
+    height: 100%;     /* 부모 박스 높이에 맞춤 */
+    object-fit: cover; /* 사진 비율이 깨지지 않게 꽉 채움 */
+}
+        .tag:hover {
+    background: #007aff; /* 배경색 파란색으로 */
+    color: white; /* 글자색 흰색으로 */
+    
+    /* 3. 살짝 위로 띄우고 그림자 넣기 */
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 122, 255, 0.4);
         }
         .back-btn {
             display: inline-block;
@@ -73,14 +126,21 @@
 </head>
 <body>
 
-<div class="profile-container">
-    <div class="header">
+<div class="header profile-header">
+    <div class="profile-pic-wrapper">
+        <div class="profile-pic-wrapper">
+    <img src="D:\semicolon-git-workshop\images\박수용_증명사진.jpg" alt="박수용 프로필" class="profile-img">
+</div>
+    </div>
+
+    <div class="profile-info">
         <div class="name">박수용</div>
         <div class="role">예비 개발자 | Semicolon Member</div>
-        <p style="color: #ccc; line-height: 1.6;">
+        <p class="bio">
             꾸준히 성장하며 효율적인 코드를 고민하는 개발자 지망생입니다.
         </p>
     </div>
+</div>
 
     <div class="section">
         <div class="section-title">기술 스택 (Tech Stacks)</div>
