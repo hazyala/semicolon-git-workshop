@@ -1,0 +1,159 @@
+/* 강석현 전용 프로필 스타일 시트 */
+:root {
+    --accent-color: #f9d849; 
+    --bg-dark: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --text-secondary: #94a3b8;
+    --neon-shadow: 0 0 20px rgba(249, 216, 73, 0.3);
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: #fff;
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(249, 216, 73, 0.05) 0%, transparent 80%);
+    z-index: -1;
+}
+
+.profile-container {
+    max-width: 1000px;
+    margin: 140px auto 80px;
+    padding: 0 20px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-hero {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    backdrop-filter: blur(15px);
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.profile-img-area {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 4px solid var(--accent-color);
+    overflow: hidden;
+    box-shadow: var(--neon-shadow);
+    background: #1e293b;
+    flex-shrink: 0;
+}
+
+.profile-img-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    margin: 10px 0;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+.hero-text .subtitle {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin: 60px 0 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-title::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: var(--accent-color);
+    border-radius: 2px;
+    transform: rotate(45deg);
+}
+
+.tag-container {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.custom-tag {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 24px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.custom-tag:hover {
+    background: var(--accent-color);
+    color: #000;
+    transform: translateY(-5px);
+    box-shadow: var(--neon-shadow);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.project-item {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.4s;
+}
+
+.project-item:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-10px);
+}
+
+.footer-nav {
+    margin-top: 100px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.back-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.back-link:hover { color: #fff; }
+
+@media (max-width: 768px) {
+    .profile-hero { flex-direction: column; text-align: center; }
+    .project-grid { grid-template-columns: 1fr; }
+}
