@@ -31,7 +31,7 @@
 
         <!-- 상단: 흰 배경 + KIM HAEMIN -->
         <div class="landing-top">
-            <p class="eyebrow">PRODUCT MANAGER × AI ENGINEER</p>
+            <p class="eyebrow">&nbsp; PRODUCT MANAGER × AI ENGINEER</p>
             <h1 class="giant-text landing-name reveal-text">KIM<br>HAEMIN</h1>
         </div>
 
@@ -81,7 +81,7 @@
         <span class="section-num skills-label">02 — CORE SKILLS</span>
 
         <!-- center-text 독립 배치 -->
-        <div class="center-text">PM × AI × ART</div>
+        <div class="center-text">PM <span class="accent">×</span> AI <span class="accent">×</span> ART</div>
 
         <!-- 노드 — position: absolute, % 기반으로 섹션에 직접 배치 -->
         <div class="node node-tl reveal-text" id="node-tl">
@@ -184,7 +184,7 @@
 
         const scene  = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 200);
-        camera.position.z = 9.0;
+        camera.position.z = 11.0;
 
         function createSphere(radius, segments, color, opacity) {
             const geo = new THREE.SphereGeometry(radius, segments, segments);

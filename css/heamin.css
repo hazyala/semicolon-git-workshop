@@ -14,9 +14,15 @@ body {
 
 :root {
     --pink: #ff1493;
+    --cyan: #00f0ff;
     --dark: #050505;
     --light: #ffffff;
     --gray: #888888;
+}
+
+.cyan-bg {
+    background-color: var(--cyan);
+    color: var(--light);
 }
 
 .giant-text {
@@ -147,7 +153,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;   
-    padding: 72px 5vw 20px;
+    padding: 72px 5vw 25px;
     min-height: 0;
 }
 
@@ -157,14 +163,13 @@ body {
     letter-spacing: 4px;
     color: #999;
     padding-top: 4px;
-    margin-bottom: 12px;    
+    margin-bottom: 80px;    
 }
 
 .landing-name {
     line-height: 0.82;
     letter-spacing: -0.04em;
     color: var(--dark);
-    /* 섹션 높이에 꽉 차도록 유동 크기 */
     font-size: clamp(72px, 14vw, 180px);
 }
 
@@ -203,6 +208,7 @@ body {
     border-bottom: 2px solid var(--dark);
     flex-shrink: 0;
 }
+
 .marquee-track {
     display: flex;
     white-space: nowrap;
@@ -211,7 +217,9 @@ body {
     font-size: clamp(16px, 2vw, 28px);
     font-weight: 900;
     letter-spacing: 2px;
+    color: var(--cyan);
 }
+
 @keyframes marqueeScroll {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -321,97 +329,100 @@ body {
 .container .btn:hover::after  { top: 0; }
 
 /* =========================================
-   SKILLS 방사형 3D
+   SKILLS 방사형 3D 
    ========================================= */
 .section-skills-radial {
     position: relative;
-    height: 120vh;
+    height: 100vh;              
+    min-height: 700px;          
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* 캔버스 — 섹션 전체 배경 */
-.section-skills-radial #three-canvas {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    display: block;
-    z-index: 0;
-}
-
-/* SVG 연결선 — 섹션 전체 오버레이, JS로 좌표 계산 */
-.skill-lines-svg {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 2;
-    pointer-events: none;
-    overflow: visible;
+    overflow: hidden;
 }
 
 /* 섹션 번호 레이블 */
 .skills-label {
     position: absolute;
-    top: 40px; left: 5vw;
+    top: 30px; left: 5vw;       
     z-index: 10;
 }
 
-/* PM × AI × ART 텍스트 — 캔버스 위 중앙 */
+/* PM × AI × ART 텍스트 */
 .center-text {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%; 
+    left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Syncopate', sans-serif;
-    font-size: clamp(56px, 32vw, 66px);
-    font-weight: 1000;
-    color: var(--light);
+    font-size: clamp(50px, 8vw, 80px);   
+    font-weight: 900;
+    color: var(--light);  
     z-index: 10;
-    text-shadow: 0 0 20px var(--pink), 0 0 40px rgba(255,20,147,0.4);
     pointer-events: none;
     white-space: nowrap;
+
+    text-shadow: 
+        0 0 5px #ffffff,
+        0 0 10px #ffffff,
+        0 0 20px var(--pink),
+        0 0 40px var(--pink),
+        0 0 80px var(--pink);
 }
 
-/* 노드 — 섹션 기준 절대 배치 (%) */
+.center-text .accent {
+    color: var(--pink);
+    
+    text-shadow: 
+        0 0 5px #ffffff,
+        0 0 10px #ffffff,
+        0 0 20px var(--light),
+        0 0 40px var(--light),
+        0 0 80px var(--light);
+}
+
+/* 노드 */
 .node {
     position: absolute;
     z-index: 10;
     pointer-events: auto;
     transition: transform 0.3s ease;
-    max-width: 200px;
+    max-width: 300px;          
 }
 .node:hover { transform: scale(1.06); }
 
 .node h3 {
     font-family: 'Syncopate', sans-serif;
-    font-size: clamp(27px, 2.5vw, 30px);
+    font-size: clamp(25px, 1.7vw, 30px);   
     color: var(--pink);
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     transition: letter-spacing 0.25s ease;
     line-height: 1.3;
+    white-space: nowrap;
 }
 .node:hover h3 { letter-spacing: 2px; }
 
 .node p {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(17px,2 vw, 17px);
+    font-size: clamp(15px, 0.9vw, 15px);   
     color: var(--light);
-    font-weight: 600;
+    font-weight: 500;
     opacity: 0.8;
+    line-height: 1.4;
+    white-space: nowrap;
 }
 
-/* 노드 위치 — 섹션 % 기준 */
-.node-tl { top: 15%; left:  5%;  text-align: right; }
-.node-cl { top: 47%; left:  3%;  text-align: right; transform: translateY(-50%); }
-.node-bl { top: 75%; left:  5%;  text-align: right; }
-.node-tr { top: 15%; right: 5%;  text-align: left; }
-.node-cr { top: 47%; right: 3%;  text-align: left; transform: translateY(-50%); }
-.node-br { top: 75%; right: 5%;  text-align: left; }
+/* 노드 위치 */
+.node-tl { top: 20%; left: 5%; text-align: right; }
+.node-cl { top: 50%; left: 8%; text-align: right; transform: translateY(-50%); }
+.node-bl { top: 78%; left: 10%; text-align: right; }
+.node-tr { top: 20%; right: 14%; text-align: left; }
+.node-cr { top: 50%; right: 5%; text-align: left; transform: translateY(-50%); }
+.node-br { top: 78%; right: 12%; text-align: left; }
 
-/* hover 시 transform 재정의 (translateY 유지) */
 .node-cl:hover { transform: translateY(-50%) scale(1.06); }
 .node-cr:hover { transform: translateY(-50%) scale(1.06); }
+
 /* =========================================
    STRENGTHS
    ========================================= */
