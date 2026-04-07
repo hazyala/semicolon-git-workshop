@@ -299,7 +299,7 @@ body {
     transform: rotateX(90deg) scale(1.1) translateZ(-80px); 
 }
 
-/* 작은 박스 텀블링 애니메이션  */
+/* 작은 박스 텀블링 애니메이션 (하교하신 수치 반영) */
 .obj-1 .inn6 {
     background: var(--cyan);
     transform: rotateX(90deg) translateZ(90px);
@@ -572,88 +572,215 @@ body {
 .node-cr:hover { transform: translateY(-50%) scale(1.06); }
 
 /* =========================================
-   STRENGTHS
+   STRENGTHS — 3D CAROUSEL
    ========================================= */
 .section-strengths {
-    padding: 15vh 5vw;
+    padding: 15vh 2.5vw 10vh;
     border-top: 1px solid var(--dark);
+    overflow: visible;
 }
-.strengths-header { margin-bottom: 80px; }
+.strengths-header { margin-bottom: 60px; }
 
-.cards-wrapper {
+.carousel-scene {
+    width: 100%;
+    height: 520px;
+    perspective: 1600px;
+    perspective-origin: 50% 40%;
     display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding-bottom: 40px;
-    scrollbar-width: none;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
 }
-.cards-wrapper::-webkit-scrollbar { display: none; }
 
-.folded-card {
-    min-width: 320px; height: 400px;
-    background: var(--light);
-    border: 2px solid #e0c3fc;
-    border-radius: 16px;
+.ring {
     position: relative;
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 340px;
+    height: 380px;
+    transform-style: preserve-3d;
+    animation: ringSpinStrengths 20s linear infinite;
+    will-change: transform;
 }
-.folded-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 20, 147, 0.2);
+.ring:hover { animation-play-state: paused; }
+
+@keyframes ringSpinStrengths {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
 }
 
-/* 접힌 효과 */
-.card-fold {
+.cs {
     position: absolute;
-    top: -2px; right: -2px;
-    width: 80px; height: 80px;
-    background-color: #fce7f3;
-    background-image:
-        linear-gradient(white 1px, transparent 1px),
-        linear-gradient(90deg, white 1px, transparent 1px);
-    background-size: 15px 15px;
-    border-bottom-left-radius: 16px;
-    border-left: 2px solid #e0c3fc;
-    border-bottom: 2px solid #e0c3fc;
-    z-index: 2;
+    width: 340px;
+    height: 380px;
+    top: 0; left: 0;
+}
+.cs:nth-child(1) { transform: rotateY(0deg)   translateZ(var(--ring-r, 420px)); }
+.cs:nth-child(2) { transform: rotateY(90deg)  translateZ(var(--ring-r, 420px)); }
+.cs:nth-child(3) { transform: rotateY(180deg) translateZ(var(--ring-r, 420px)); }
+.cs:nth-child(4) { transform: rotateY(270deg) translateZ(var(--ring-r, 420px)); }
+
+/* 카드 본체 — 반투명 검은 배경 */
+.cw {
+    width: 100%; height: 100%;
+    border-radius: 20px;
+    background: rgba(8, 8, 20, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(0, 240, 255, 0.22);
+    overflow: hidden;
+    position: relative;
+    transition: border-color .3s, box-shadow .3s;
+    cursor: default;
+    animation: cardDimStrengths 20s linear infinite;
+}
+.ring:hover .cw { animation-play-state: paused; }
+.cw:hover {
+    border-color: rgba(0, 240, 255, .75);
+    box-shadow: 0 0 36px rgba(0, 240, 255, .18), inset 0 0 28px rgba(0,0,0,.25);
+}
+
+@keyframes cardDimStrengths {
+    10%  { filter: brightness(1); }
+    50%  { filter: brightness(.4); }
+    90%  { filter: brightness(1); }
+}
+
+/* 코너 브라켓 */
+.co span {
+    position: absolute;
+    width: 16px; height: 16px;
+    border: 1.5px solid rgba(0, 240, 255, .3);
+    transition: all .3s;
+}
+.co span:nth-child(1) { top: 12px; left: 12px; border-right: 0; border-bottom: 0; }
+.co span:nth-child(2) { top: 12px; right: 12px; border-left: 0; border-bottom: 0; }
+.co span:nth-child(3) { bottom: 12px; left: 12px; border-right: 0; border-top: 0; }
+.co span:nth-child(4) { bottom: 12px; right: 12px; border-left: 0; border-top: 0; }
+.cw:hover .co span {
+    border-color: rgba(0, 240, 255, .9);
+    box-shadow: 0 0 8px rgba(0, 240, 255, .5);
+}
+
+/* 스캔 라인 */
+.sl {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0,240,255,.05), transparent);
+    transform: translateY(-100%);
+    animation: scanStrengths 2.8s linear infinite;
+    pointer-events: none;
+}
+@keyframes scanStrengths {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+}
+
+/* 사이버 수평선 */
+.cl span {
+    position: absolute; height: 1px; width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,240,255,.15), transparent);
+}
+.cl span:nth-child(1) { top: 20%; animation: clGrow 3s linear infinite 0s; }
+.cl span:nth-child(2) { top: 42%; animation: clGrow 3s linear infinite .8s; transform-origin: right; }
+.cl span:nth-child(3) { top: 64%; animation: clGrow 3s linear infinite 1.6s; }
+.cl span:nth-child(4) { top: 82%; animation: clGrow 3s linear infinite 2.2s; transform-origin: right; }
+@keyframes clGrow {
+    0%   { transform: scaleX(0); opacity: 0; }
+    50%  { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(0); opacity: 0; }
+}
+
+/* 아이콘 원형 뱃지 */
+.ci {
+    position: absolute;
+    top: 30px; left: 50%;
+    transform: translateX(-50%);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(0, 240, 255, .07);
+    border: 1px solid rgba(0, 240, 255, .25);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .3s, border-color .3s;
+    z-index: 6;
+}
+.cw:hover .ci {
+    background: rgba(0, 240, 255, .15);
+    border-color: rgba(0, 240, 255, .65);
+}
+
+/* 카드 텍스트 */
+.cin {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px 22px 28px;
+    z-index: 5;
+}
+.cn {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 9px; letter-spacing: 3px;
+    color: rgba(0, 240, 255, .5);
+    margin-bottom: 8px;
+}
+.ct {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px; font-weight: 800;
+    color: var(--light);
+    margin-bottom: 10px; line-height: 1.35;
+}
+.cd {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    color: rgba(255, 255, 255, .5);
+    line-height: 1.7;
+}
+
+/* 파티클 */
+.cp span {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: var(--cyan);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+.cw:hover .cp span { animation: cpFloat 2s infinite; }
+@keyframes cpFloat {
+    0%   { opacity: 0; transform: translate(0, 0); }
+    50%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(calc(var(--x,0)*28px), calc(var(--y,0)*28px)); }
+}
+.cp span:nth-child(1) { --x: 1;   --y: -1;  top: 45%; left: 20%; }
+.cp span:nth-child(2) { --x: -1;  --y: -1;  top: 55%; right: 20%; }
+.cp span:nth-child(3) { --x: .5;  --y: 1;   top: 25%; left: 45%; }
+.cp span:nth-child(4) { --x: -.5; --y: 1;   top: 75%; right: 45%; }
+.cp span:nth-child(5) { --x: 1;   --y: .5;  top: 35%; left: 65%; }
+.cp span:nth-child(6) { --x: -1;  --y: .5;  top: 65%; right: 65%; }
+
+/* 하단 네비 도트 */
+.carousel-dots {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
 }
-.card-fold::after {
-    content: '';
-    width: 12px; height: 12px;
-    background: var(--light);
+.cdot {
+    width: 6px; height: 6px;
     border-radius: 50%;
-    border: 2px solid #e0c3fc;
+    background: rgba(5, 5, 5, .25);
+    border: none; padding: 0;
+    cursor: pointer;
+    transition: background .3s, transform .3s;
 }
-.folded-card::before {
-    content: '';
-    position: absolute;
-    top: -2px; right: -2px;
-    width: 80px; height: 80px;
-    background: var(--pink);
-    z-index: 1;
+.cdot.active {
+    background: var(--dark);
+    transform: scale(1.5);
 }
-
-.card-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--dark);
-    margin-bottom: 15px;
-    transition: color 0.25s ease;
-}
-.folded-card:hover .card-title { color: var(--pink); }
-
-.card-desc {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.6;
+.carousel-hint {
+    text-align: center;
+    margin-top: 14px;
+    font-family: 'Syncopate', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(5, 5, 5, .35);
 }
 
 /* =========================================
