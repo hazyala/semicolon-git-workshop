@@ -3,172 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>박수용 | 프로필</title>
-    <link rel="stylesheet" href="style.css"> 
+    <title>박수용 | 포트폴리오</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        /* 페이지 전체 테마 (다크 모드 기준) */
-        body {
-            background-color: #1e1e1e;
-            color: #ffffff;
-            font-family: 'Pretendard', sans-serif;
-            display: flex;
-            justify-content: center;
-            padding: 50px 20px;
-        }
-        .profile-container 
-/* style.css 또는 <style> 태그 안 */
-.profile-container {
-    max-width: 600px;
-    width: 100%;
-    /* 1. 배경을 미세한 그라데이션으로 변경 */
-    background: linear-gradient(145deg, #2d2d2d, #252525);
-    /* 2. 테두리를 살짝 넣어서 더 깔끔하게 */
-    border: 1px solid #3d3d3d;
-    border-radius: 15px;
-    padding: 30px;
-    /* 3. 그림자를 더 부드럽고 깊게 */
-    box-shadow: 10px 10px 30px #1a1a1a, -10px -10px 30px #262626;
-    /* 4. 등장할 때 스윽 나타나는 애니메이션 (옵션) */
-    animation: fadeIn 0.8s ease-in-out;
+        /* 기본 테마 및 폰트 설정 */
+body {
+    background-color: #fdfdfd; /* 완전 흰색보다 눈이 편한 미세한 크림 화이트 */
+    color: #333;
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    margin: 0;
+    padding-top: 100px; /* 네비게이션 바 공간 */
+    line-height: 1.7; /* 줄 간격 넓혀서 가독성 확보 */
+    -webkit-font-smoothing: antialiased; /* 폰트 더 부드럽게 */
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* 네비게이션 바 */
+.nav-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95); /* 미세한 투명감 */
+    backdrop-filter: blur(10px); /* 뒤 배경 흐리게 */
+    border-bottom: 1px solid #eaeaea;
+    z-index: 1000;
 }
-       /* 헤더 전체 레이아웃 (가로 정렬) */
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover, .github-icon:hover {
+    color: #007aff; /* 호버 시 파란색 */
+}
+
+/* 컨테이너 */
+.main-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* 헤더 섹션 */
 .profile-header {
     display: flex;
     align-items: center;
-    gap: 30px; 
-    text-align: left; 
-    border-bottom: 1px solid #444;
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-    /* 아까 만든 fadeIn 애니메이션 적용 */
-    animation: fadeIn 0.8s ease-in-out;
+    gap: 50px; /* 더 넓은 간격 */
+    margin-bottom: 80px;
 }
 
-/* 이미지 동그란 박스 */
 .profile-pic-wrapper {
     flex-shrink: 0;
-    width: 120px;
-    height: 120px;
-    background: #3a3a3a;
+    width: 160px; /* 약간 더 크게 */
+    height: 160px;
     border-radius: 50%;
-    border: 3px solid #007aff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* 더 부드러운 그림자 */
     overflow: hidden;
+    border: 4px solid white; /* 흰색 테두리 */
 }
 
-/* 텍스트 영역 */
-.profile-info {
-    flex: 1;
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-        .name {
-            font-size: 2rem;
-            margin: 10px 0;
-            color: #ff4500; /* 강조색 */
-        }
-        .role {
-            color: #86868b;
-            font-size: 1.1rem;
-        }
-        .section {
-            margin-bottom: 25px;
-        }
-        .section-title {
-            font-size: 1.2rem;
-            color: #007aff;
-            margin-bottom: 10px;
-            border-left: 4px solid #007aff;
-            padding-left: 10px;
-        }
-        .skill-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .tag {
-            background: #444;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        .profile-img {
-    width: 100%;      /* 부모 박스 너비에 맞춤 */
-    height: 100%;     /* 부모 박스 높이에 맞춤 */
-    object-fit: cover; /* 사진 비율이 깨지지 않게 꽉 채움 */
+
+.profile-info h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 5px 0 20px 0;
+    letter-spacing: -1px;
 }
-        .tag:hover {
-    background: #007aff; /* 배경색 파란색으로 */
-    color: white; /* 글자색 흰색으로 */
-    
-    /* 3. 살짝 위로 띄우고 그림자 넣기 */
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 122, 255, 0.4);
-        }
-        .back-btn {
-            display: inline-block;
-            margin-top: 20px;
-            color: #86868b;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        .back-btn:hover {
-            color: #fff;
-        }
+
+.greeting {
+    font-size: 1.1rem;
+    color: #888;
+}
+
+.bio {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* 깃허브 버튼 */
+.github-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #24292e; /* 깃허브 시그니처 색상 */
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.github-btn:hover {
+    transform: translateY(-3px); /* 위로 살짝 뜨는 효과 */
+    box-shadow: 0 5px 15px rgba(36, 41, 46, 0.3);
+}
+
+/* 섹션 타이틀 (세로선 + 볼드) */
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    border-left: 6px solid #1a1a1a;
+    padding-left: 20px;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+}
+
+/* 기술 스택 태그 (회색 배경 + 호버 효과) */
+.skill-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.tag {
+    background: #f1f3f5;
+    color: #495057;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.tag:hover {
+    background: #007aff;
+    color: white;
+}
+
+/* 프로젝트 카드 (예시 이미지보다 더 세련되게) */
+.project-card {
+    background: white;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05); /* 깊은 그림자 */
+    border-color: #d1e9ff; /* 미세한 파란 테두리 */
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.project-card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.project-date {
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+.project-card p {
+    color: #666;
+    margin: 0 0 15px 15px;
+    font-size: 0.95rem;
+}
+
+.project-tech {
+    font-size: 0.8rem;
+    color: #007aff;
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+/* 푸터 */
+.footer {
+    text-align: center;
+    padding: 60px 0;
+    border-top: 1px solid #eaeaea;
+    background: #fbfbfb;
+    margin-top: 80px;
+}
+
+.footer p {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer a:hover { color: #1a1a1a; }
     </style>
 </head>
 <body>
 
-<div class="header profile-header">
-    <div class="profile-pic-wrapper">
+<nav class="nav-bar">
+    <div class="nav-container">
+        <a href="#about" class="nav-logo">SUYONG.P</a>
+        <div class="nav-links">
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="https://github.com/psy0635-ctrl" target="_blank" class="github-icon">
+                <svg width="20" height="20" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59c.4.07.55-.17.55-.38c0-.19-.01-.82-.01-1.49c-2.01.37-2.53-.49-2.69-.94c-.09-.23-.48-.94-.82-1.13c-.28-.15-.68-.52-.01-.53c.63-.01 1.08.58 1.23.82c.72 1.21 1.87.87 2.33.66c.07-.52.28-.87.51-1.07c-1.78-.2-3.64-.89-3.64-3.95c0-.87.31-1.59.82-2.15c-.08-.2-.36-1.02.08-2.12c0 0 .67-.21 2.2.82c.64-.18 1.32-.27 2-.27c.68 0 1.36.09 2 .27c1.53-1.03 2.2-.82 2.2-.82c.44 1.1.16 1.92.08 2.12c.51.56.82 1.27.82 2.15c0 3.07-1.87 3.75-3.65 3.95c.29.25.54.73.54 1.48c0 1.07-.01 1.93-.01 2.2c0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="main-container">
+    <header class="profile-header" id="about">
         <div class="profile-pic-wrapper">
-    <img src="D:\semicolon-git-workshop\images\박수용_증명사진.jpg" alt="박수용 프로필" class="profile-img">
-</div>
-    </div>
+            <img src="D:\semicolon-git-workshop\images\박수용_증명사진.jpg" alt="박수용" class="profile-img">
+        </div>
+        <div class="profile-info">
+            <span class="greeting">안녕하세요,</span>
+            <h1>개발자 박수용입니다.</h1>
+            <p class="bio">
+                끊임없이 학습하고 문제를 해결하는 과정에서 즐거움을 느낍니다.<br>
+                현재 인공지능 소프트웨어를 전공하며 C#, Linux 시스템에 깊은 관심을 두고 있습니다.
+            </p>
+            <a href="https://github.com/psy0635-ctrl" target="_blank" class="github-btn">GitHub 방문하기</a>
+        </div>
+    </header>
 
-    <div class="profile-info">
-        <div class="name">박수용</div>
-        <div class="role">예비 개발자 | Semicolon Member</div>
-        <p class="bio">
-            꾸준히 성장하며 효율적인 코드를 고민하는 개발자 지망생입니다.
-        </p>
-    </div>
-</div>
-
-    <div class="section">
-        <div class="section-title">기술 스택 (Tech Stacks)</div>
+    <section class="section" id="skills">
+        <h2 class="section-title">Skills</h2>
         <div class="skill-tags">
             <span class="tag">C / C#</span>
             <span class="tag">Java</span>
             <span class="tag">HTML/CSS</span>
             <span class="tag">Linux</span>
-            <span class="tag">Git & GitHub</span>
+            <span class="tag">Git</span>
         </div>
-    </div>
+    </section>
 
-    <div class="section">
-        <div class="section-title">관심 분야</div>
-        <ul style="list-style: none; padding: 0; color: #ddd;">
-            <li>🚀 시스템 프로그래밍 및 리눅스 관리</li>
-            <li>💻 C#을 활용한 윈도우 애플리케이션 개발</li>
-            <li>🛠 오픈소스 프로젝트 협업</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Contact</div>
-        <p style="color: #ddd;">GitHub: <a href="#" style="color: #007aff; text-decoration: none;">@suyong-park</a></p>
-    </div>
-
-    <a href="index.html" class="back-btn">← 메인 페이지로 돌아가기</a>
+    <section class="section" id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Semicolon Team Introduction Page</h3>
+                <span class="project-date">2024.04</span>
+            </div>
+            <p>Git Flow를 활용한 협업 실습 및 개인 프로필 페이지 제작</p>
+            <div class="project-tech">#Git #HTML #CSS</div>
+        </div>
+        <div class="project-card">
+            <div class="project-header">
+                <h3>C-Language Calculator</h3>
+                <span class="project-date">2024.03</span>
+            </div>
+            <p>GitHub 협업을 통해 사칙연산 기능을 분담하여 구현</p>
+            <div class="project-tech">#C-Language #GitHub</div>
+        </div>
+    </section>
 </div>
+
+<footer class="footer">
+    <p>© 2024 Suyong Park. All rights reserved.</p>
+    <a href="index.html">← 메인 페이지로 돌아가기</a>
+</footer>
 
 </body>
 </html>
