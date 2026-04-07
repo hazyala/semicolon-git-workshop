@@ -29,6 +29,15 @@ body {
     letter-spacing: -0.05em;
 }
 
+.giant-text :hover {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 11vw;
+    font-weight: 900;
+    text-emphasis-color: var(--pink);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+}
+
 .section-num {
     font-family: 'Syncopate', sans-serif;
     font-size: 14px;
@@ -193,7 +202,6 @@ body {
     line-height: 1.8;
 }
 
-/* ─ 제공해주신 유리 질감 버튼 코드 완벽 이식 ─ */
 .container .btn {
     position: relative;
     width: 160px;

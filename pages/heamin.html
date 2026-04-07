@@ -204,7 +204,7 @@
             pPos[i * 3 + 2] = (Math.random() - 0.5) * 10;
         }
         pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-        const pMat = new THREE.PointsMaterial({ color: 0xff1493, size: 0.02, transparent: true, opacity: 0.5 });
+        const pMat = new THREE.PointsMaterial({ color: 0xff1493, size: 0.04, transparent: true, opacity: 0.5 });
         scene.add(new THREE.Points(pGeo, pMat));
 
         // 마우스 무브 반응
