@@ -231,6 +231,31 @@ body {
 }
 
 .footer a:hover { color: #1a1a1a; }
+
+.section,
+.profile-header {
+    scroll-margin-top: 80px;
+        }
+
+@media (max-width: 600px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        margin-bottom: 50px;
+    }
+      .profile-info h1 {
+        font-size: 1.8rem;
+    }
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+     .section-title {
+        font-size: 1.4rem;
+    }
+}      
     </style>
 </head>
 <body>
@@ -251,7 +276,7 @@ body {
 <div class="main-container">
     <header class="profile-header" id="about">
         <div class="profile-pic-wrapper">
-            <img src="D:\semicolon-git-workshop\images\박수용_증명사진.jpg" alt="박수용" class="profile-img">
+           <img src="../images/박수용_증명사진.jpg" alt="박수용" class="profile-img">
         </div>
         <div class="profile-info">
             <span class="greeting">안녕하세요,</span>
@@ -298,7 +323,7 @@ body {
 
 <footer class="footer">
     <p>© 2024 Suyong Park. All rights reserved.</p>
-    <a href="index.html">← 메인 페이지로 돌아가기</a>
+    <a href="../index.html">← 메인 페이지로 돌아가기</a>
 </footer>
 
 </body>
