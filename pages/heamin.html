@@ -204,7 +204,7 @@
             pPos[i * 3 + 2] = (Math.random() - 0.5) * 10;
         }
         pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-        const pMat = new THREE.PointsMaterial({ color: 0xff1493, size: 0.04, transparent: true, opacity: 0.5 });
+        const pMat = new THREE.PointsMaterial({ color: 0xff1493, size: 0.0, transparent: true, opacity: 0.5 });
         scene.add(new THREE.Points(pGeo, pMat));
 
         // 마우스 무브 반응
@@ -234,6 +234,107 @@
             renderer.setSize(container.clientWidth, container.clientHeight);
         });
     </script>
+
+
+
+<!-- <script>
+        // 1. 반전 커서 (Difference Blend Mode)
+        const cursor = document.querySelector('.custom-cursor');
+        const hoverTargets = document.querySelectorAll('.hover-target, a');
+
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => cursor.classList.add('active'));
+            target.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+        });
+
+        // 2. 스크롤 Reveal 애니메이션
+        const revealElements = document.querySelectorAll('.reveal-text');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // 3. Three.js 3D 와이어프레임 구체 및 배경 확장 연출
+        const container = document.getElementById('canvas-container');
+        const canvas = document.getElementById('three-canvas');
+
+        // 렌더러 생성 및 섹션 컨테이너 크기에 맞춤 설정함.
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 100);
+        // 구체 확장에 비례하여 카메라를 뒤로 이동시킴.
+        camera.position.z = 9.0; 
+
+        // 구체 생성 함수 (핑크 테마 유지)
+        function createSphere(radius, segments, color, opacity) {
+            const geo = new THREE.SphereGeometry(radius, segments, segments);
+            const mat = new THREE.MeshBasicMaterial({ color: color, wireframe: true, transparent: true, opacity: opacity });
+            return new THREE.Mesh(geo, mat);
+        }
+
+        // 기존 대비 구체의 크기(반지름)를 대폭 확장함.
+        const sphereMain = createSphere(4.0, 16, 0xff1493, 0.6); // 메인 핫핑크
+        const sphereOuter = createSphere(5.5, 12, 0xff69b4, 0.2); // 외부 연핑크
+        const sphereInner = createSphere(2.0, 8, 0xffffff, 0.15); // 내부 화이트
+        scene.add(sphereMain, sphereOuter, sphereInner);
+
+        // 파티클 배경 전체 영역으로 확장함.
+        const particleCount = 3000; // 넓어진 배경에 맞춰 파티클 개수 증가함.
+        const particleGeometry = new THREE.BufferGeometry();
+        const particlePositions = new Float32Array(particleCount * 3);
+        
+        // 파티클이 흩뿌려지는 범위를 10에서 50으로 넓게 설정함.
+        for (let i = 0; i < particleCount; i++) {
+            particlePositions[i * 3] = (Math.random() - 0.5) * 50;
+            particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 50;
+            particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 50;
+        }
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+        const particleMaterial = new THREE.PointsMaterial({ color: 0xff1493, size: 0.05, transparent: true, opacity: 0.5 });
+        scene.add(new THREE.Points(particleGeometry, particleMaterial));
+
+        // 마우스 무브 반응 로직
+        let mouseX = 0, mouseY = 0;
+        document.querySelector('.section-skills-radial').addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        // 애니메이션 루프 실행함.
+        const clock = new THREE.Clock();
+        function animate() {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
+
+            sphereMain.rotation.y = elapsedTime * 0.15 + mouseX * 0.3;
+            sphereMain.rotation.x = elapsedTime * 0.1 - mouseY * 0.3;
+            sphereOuter.rotation.y = -elapsedTime * 0.1 + mouseX * 0.2;
+            sphereInner.rotation.z = elapsedTime * 0.2;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // 브라우저 리사이즈 시 확장된 컨테이너 크기에 맞춰 동기화함.
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    </script> -->
 </body>
 
 </html>
