@@ -18,7 +18,7 @@
             background-color: #000;
             color: #fff;
             font-family: 'Inter', 'Noto Sans KR', sans-serif;
-            overflow-x: hidden; 
+            overflow-x: hidden;
             height: 100vh;
         }
 
@@ -62,13 +62,13 @@
         .logo { font-weight: 900; }
 
         .main-content {
-            min-height: 75vh; 
+            min-height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
             padding-left: 60px;
-            padding-bottom: 100px; 
+            padding-bottom: 100px;
             position: relative;
         }
 
@@ -128,22 +128,22 @@
 
         .nav-logo {
             font-weight: 900;
-            font-family: 'Inter', 'Noto Sans KR', sans-serif; 
-            font-size: 0.85rem;                               
-            color: #fff;                                      
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            font-size: 0.85rem;
+            color: #fff;
             margin-right: 10px;
             padding-left: 10px;
         }
 
         .nav-item {
-            display: inline-block; 
+            display: inline-block;
             background: none;
             border: none;
             color: #777;
             padding: 10px 22px;
             cursor: pointer;
             font-size: 0.85rem;
-            font-family: 'Inter', 'Noto Sans KR', sans-serif; 
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
             transition: 0.3s;
             text-decoration: none;
         }
@@ -172,6 +172,41 @@
             font-weight: 800;
         }
 
+        .nav-item.yellow:hover {
+            background: #d4f060;
+            color: #000;
+        }
+
+        .nav-item.home {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .nav-item.home:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.35);
+            color: #fff;
+        }
+
+        .nav-item.home i {
+            font-size: 0.8rem;
+        }
+
+        .nav-divider {
+            width: 1px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 0 4px;
+        }
+        
         @media (max-width: 1024px) {
             .hero-title { font-size: 5rem; letter-spacing: -2px; }
             .header { gap: 40px; }
@@ -223,9 +258,16 @@
     <nav class="floating-nav">
         <div class="nav-container">
             <span class="nav-logo">[DEV.LOG]</span>
+
             <a href="#" class="nav-item active" onclick="event.preventDefault()">Info</a>
             <a href="#" class="nav-item" onclick="event.preventDefault()">Projects</a>
             <a href="#" class="nav-item" onclick="event.preventDefault()">Stacks</a>
+
+            <div class="nav-divider"></div>
+            <a href="index.html" class="nav-item home">
+                <i class="fas fa-arrow-left"></i> 홈으로
+            </a>
+
             <a href="https://github.com/psy0635-ctrl" target="_blank" class="nav-item yellow">Visit GitHub</a>
         </div>
     </nav>
