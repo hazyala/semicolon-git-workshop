@@ -20,8 +20,8 @@
     <nav class="top-nav">
         <a href="../index.html" class="nav-brand hover-target">SEMICOLON<span>;</span></a>
         <div class="nav-links">
-            <a href="#about"    class="nav-item hover-target">ABOUT</a>
-            <a href="#skills"   class="nav-item hover-target">SKILLS</a>
+            <a href="#about" class="nav-item hover-target">ABOUT</a>
+            <a href="#skills" class="nav-item hover-target">SKILLS</a>
             <a href="#strengths" class="nav-item hover-target">STRENGTHS</a>
             <a href="https://github.com/hazyala" target="_blank" class="nav-item hover-target">GITHUB</a>
         </div>
@@ -32,14 +32,29 @@
         <!-- 상단: 흰 배경 + KIM HAEMIN -->
         <div class="landing-top">
             <p class="eyebrow">&nbsp; PRODUCT MANAGER × AI ENGINEER</p>
-            <h1 class="giant-text landing-name reveal-text">KIM<br>HAEMIN</h1>
+
+            <div class="title-container">
+                <h1 class="giant-text landing-name reveal-text">KIM<br>HAEMIN</h1>
+
+                <div class="hero-3d-group">
+                    <div class="obj obj-2">
+                        <div class="objchild"><span class="inn6"></span></div>
+
+                        <div class="obj obj-1">
+                            <div class="objchild"><span class="inn6"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- 중간: 핑크 마퀴 -->
         <div class="section-marquee pink-bg">
             <div class="marquee-track">
-                <span>KOTLIN · C/C#/JAVA · MULTIMODAL AGENT · MCP · VLM ROBOT · DEEP LEARNING · SQL/ORACLE/MYSQL · </span>
-                <span>KOTLIN · C/C#/JAVA · MULTIMODAL AGENT · MCP · VLM ROBOT · DEEP LEARNING · SQL/ORACLE/MYSQL · </span>
+                <span>KOTLIN · C/C#/JAVA · MULTIMODAL AGENT · MCP · VLM ROBOT · DEEP LEARNING · SQL/ORACLE/MYSQL ·
+                </span>
+                <span>KOTLIN · C/C#/JAVA · MULTIMODAL AGENT · MCP · VLM ROBOT · DEEP LEARNING · SQL/ORACLE/MYSQL ·
+                </span>
             </div>
         </div>
 
@@ -52,7 +67,8 @@
                 </div>
                 <div class="about-right reveal-text">
                     <p class="lead-text">예술 경험을 기반으로 제품의 흐름을 설계하고, 사용자가 느끼는 감각까지 고민합니다.</p>
-                    <p class="body-text">멀티모달 AI 에이전트 구축부터 VLM 로봇 제어까지. 기술의 경계를 탐색하는 것을 즐기는 PM 지망생입니다. <br> 아이디어가 실제 서비스가 되는 전
+                    <p class="body-text">멀티모달 AI 에이전트 구축부터 VLM 로봇 제어까지. 기술의 경계를 탐색하는 것을 즐기는 PM 지망생입니다. <br> 아이디어가 실제
+                        서비스가 되는 전
                         과정을 주도하고 싶습니다.</p>
                     <div class="container" style="margin-top: 40px;">
                         <div class="btn button-wrap hover-target">
@@ -73,7 +89,7 @@
         <svg id="skill-lines" class="skill-lines-svg">
             <defs>
                 <marker id="dot" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4">
-                    <circle cx="3" cy="3" r="2.5" fill="rgba(255,20,147,0.7)"/>
+                    <circle cx="3" cy="3" r="2.5" fill="rgba(255,20,147,0.7)" />
                 </marker>
             </defs>
         </svg>
@@ -160,7 +176,7 @@
         });
         window.addEventListener('mousemove', (e) => {
             cursor.style.left = `${e.clientX}px`;
-            cursor.style.top  = `${e.clientY}px`;
+            cursor.style.top = `${e.clientY}px`;
         });
 
         // 2. 스크롤 Reveal 애니메이션
@@ -170,8 +186,8 @@
         document.querySelectorAll('.reveal-text').forEach(el => io.observe(el));
 
         // 3. Three.js — 캔버스를 섹션 전체 배경으로
-        const section  = document.querySelector('.section-skills-radial');
-        const canvas   = document.getElementById('three-canvas');
+        const section = document.querySelector('.section-skills-radial');
+        const canvas = document.getElementById('three-canvas');
 
         function getSectionSize() {
             return { w: section.clientWidth, h: section.clientHeight };
@@ -182,7 +198,7 @@
         renderer.setSize(W, H);
         renderer.setPixelRatio(window.devicePixelRatio);
 
-        const scene  = new THREE.Scene();
+        const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 200);
         camera.position.z = 11.0;
 
@@ -194,22 +210,22 @@
 
         const s1 = createSphere(4.0, 16, 0xff1493, 0.6);
         const s2 = createSphere(5.5, 12, 0xff69b4, 0.2);
-        const s3 = createSphere(2.0,  8, 0xffffff, 0.15);
+        const s3 = createSphere(2.0, 8, 0xffffff, 0.15);
         scene.add(s1, s2, s3);
 
         // 파티클 — 카메라 거리에 맞게 범위·크기 조정
         const pCount = 3000;
-        const pGeo   = new THREE.BufferGeometry();
-        const pPos   = new Float32Array(pCount * 3);
+        const pGeo = new THREE.BufferGeometry();
+        const pPos = new Float32Array(pCount * 3);
         // 초기 위치를 따로 저장해서 원래 자리 기준으로 움직이게 함
         const pOrigin = new Float32Array(pCount * 3);
         for (let i = 0; i < pCount; i++) {
             const x = (Math.random() - 0.5) * 50;
             const y = (Math.random() - 0.5) * 50;
             const z = (Math.random() - 0.5) * 30;
-            pPos[i*3]   = pOrigin[i*3]   = x;
-            pPos[i*3+1] = pOrigin[i*3+1] = y;
-            pPos[i*3+2] = pOrigin[i*3+2] = z;
+            pPos[i * 3] = pOrigin[i * 3] = x;
+            pPos[i * 3 + 1] = pOrigin[i * 3 + 1] = y;
+            pPos[i * 3 + 2] = pOrigin[i * 3 + 2] = z;
         }
         pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
         const pMat = new THREE.PointsMaterial({ color: 0xff1493, size: 0.12, transparent: true, opacity: 0.6 });
@@ -218,7 +234,7 @@
 
         let mouseX = 0, mouseY = 0;
         section.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
             mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
         });
 
@@ -228,19 +244,19 @@
             const t = clock.getElapsedTime();
 
             // 구체 회전
-            s1.rotation.y =  t * 0.15 + mouseX * 0.3;
-            s1.rotation.x =  t * 0.10 - mouseY * 0.3;
+            s1.rotation.y = t * 0.15 + mouseX * 0.3;
+            s1.rotation.x = t * 0.10 - mouseY * 0.3;
             s2.rotation.y = -t * 0.10 + mouseX * 0.2;
-            s3.rotation.z =  t * 0.20;
+            s3.rotation.z = t * 0.20;
 
             // 파티클 — 각 점이 원래 위치 기준으로 부드럽게 유영
             const pos = pGeo.attributes.position.array;
             for (let i = 0; i < pCount; i++) {
                 // 파티클마다 다른 위상(i * 0.3)으로 서로 다르게 움직임
                 const phase = i * 0.3;
-                pos[i*3]   = pOrigin[i*3]   + Math.sin(t * 0.4 + phase)        * 0.35;
-                pos[i*3+1] = pOrigin[i*3+1] + Math.cos(t * 0.3 + phase * 0.7)  * 0.35;
-                pos[i*3+2] = pOrigin[i*3+2] + Math.sin(t * 0.25 + phase * 1.3) * 0.2;
+                pos[i * 3] = pOrigin[i * 3] + Math.sin(t * 0.4 + phase) * 0.35;
+                pos[i * 3 + 1] = pOrigin[i * 3 + 1] + Math.cos(t * 0.3 + phase * 0.7) * 0.35;
+                pos[i * 3 + 2] = pOrigin[i * 3 + 2] + Math.sin(t * 0.25 + phase * 1.3) * 0.2;
             }
             pGeo.attributes.position.needsUpdate = true;
 
@@ -254,8 +270,8 @@
         // ── SVG 연결선 동적 계산 ──
         // 섹션 중심 → 각 노드 중심 실시간 연결
         const skillSvg = document.getElementById('skill-lines');
-        const nodeIds  = ['node-tl','node-cl','node-bl','node-tr','node-cr','node-br'];
-        let svgLines   = [];
+        const nodeIds = ['node-tl', 'node-cl', 'node-bl', 'node-tr', 'node-cr', 'node-br'];
+        let svgLines = [];
 
         // 선 6개 생성
         nodeIds.forEach(() => {
@@ -269,21 +285,21 @@
         });
 
         function updateLines() {
-            const sec   = document.querySelector('.section-skills-radial');
+            const sec = document.querySelector('.section-skills-radial');
             const sRect = sec.getBoundingClientRect();
-            const cx    = sRect.width  / 2; // 섹션 기준 중심 X
-            const cy    = sRect.height / 2; // 섹션 기준 중심 Y
+            const cx = sRect.width / 2; // 섹션 기준 중심 X
+            const cy = sRect.height / 2; // 섹션 기준 중심 Y
 
-            skillSvg.setAttribute('width',  sRect.width);
+            skillSvg.setAttribute('width', sRect.width);
             skillSvg.setAttribute('height', sRect.height);
             skillSvg.setAttribute('viewBox', `0 0 ${sRect.width} ${sRect.height}`);
 
             nodeIds.forEach((id, i) => {
-                const node  = document.getElementById(id);
+                const node = document.getElementById(id);
                 const nRect = node.getBoundingClientRect();
                 // 섹션 기준 노드 중심 좌표
-                const nx = nRect.left - sRect.left + nRect.width  / 2;
-                const ny = nRect.top  - sRect.top  + nRect.height / 2;
+                const nx = nRect.left - sRect.left + nRect.width / 2;
+                const ny = nRect.top - sRect.top + nRect.height / 2;
                 svgLines[i].setAttribute('x1', cx);
                 svgLines[i].setAttribute('y1', cy);
                 svgLines[i].setAttribute('x2', nx);
@@ -304,4 +320,5 @@
     </script>
 
 </body>
+
 </html>
