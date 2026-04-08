@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIM HAEMIN — PM & AI Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;700;900&family=Inter:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/heamin.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+    <div class="custom-cursor"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="nav-brand hover-target">SEMICOLON<span>;</span></a>
+        <div class="nav-links">
+            <a href="#about" class="nav-item hover-target">ABOUT</a>
+            <a href="#skills" class="nav-item hover-target">SKILLS</a>
+            <a href="#strengths" class="nav-item hover-target">STRENGTHS</a>
+            <a href="https://github.com/hazyala" target="_blank" class="nav-item hover-target">GITHUB</a>
+        </div>
+    </nav>
+
+    <!-- ===== LANDING ===== -->
+    <section id="about" class="section-landing">
+        <div class="landing-top">
+            <p class="eyebrow">&nbsp; PRODUCT MANAGER × AI ENGINEER</p>
+
+            <div class="title-container">
+                <h1 class="giant-text landing-name reveal-text">KIM<br>HAEMIN</h1>
+
+                <div class="hero-3d-group">
+                    <div class="obj obj-2">
+                        <div class="objchild"><span class="inn6"></span></div>
+
+                        <div class="obj obj-1">
+                            <div class="objchild"><span class="inn6"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-marquee pink-bg">
+            <div class="marquee-track">
+                <span>KOTLIN · C/C#/JAVA · MULTIMODAL AGENT · MCP · VLM ROBOT · DEEP LEARNING · SQL/ORACLE/MYSQL ·
+                </span>
+                <span>KOTLIN · C/C#/JAVA · MULTIMODAL AGENT · MCP · VLM ROBOT · DEEP LEARNING · SQL/ORACLE/MYSQL ·
+                </span>
+            </div>
+        </div>
+
+        <div class="landing-bottom pink-bg">
+            <div class="about-grid">
+                <div class="about-left reveal-text">
+                    <span class="section-num" style="color:#050505;">01</span>
+                    <h2>두 언어를<br>쓰는 사람</h2>
+                </div>
+                <div class="about-right reveal-text">
+                    <p class="lead-text">예술 경험을 기반으로 제품의 흐름을 설계하고, 사용자가 느끼는 감각까지 고민합니다.</p>
+                    <p class="body-text">멀티모달 AI 에이전트 구축부터 VLM 로봇 제어까지. 기술의 경계를 탐색하는 것을 즐기는 PM 지망생입니다. <br> 아이디어가 실제
+                        서비스가 되는 전
+                        과정을 주도하고 싶습니다.</p>
+                    <div class="container" style="margin-top: 40px;">
+                        <div class="btn button-wrap hover-target">
+                            <a href="https://github.com/hazyala" target="_blank">GITHUB VISIT</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="section-skills-radial dark-bg">
+        <canvas id="three-canvas"></canvas>
+        <svg id="skill-lines" class="skill-lines-svg">
+            <defs>
+                <marker id="dot" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4">
+                    <circle cx="3" cy="3" r="2.5" fill="rgba(255,20,147,0.7)" />
+                </marker>
+            </defs>
+        </svg>
+
+        <span class="section-num skills-label">02 — CORE SKILLS</span>
+        <div class="center-text">PM <span class="accent">×</span> AI <span class="accent">×</span> ART</div>
+        <div class="node node-tl reveal-text" id="node-tl">
+            <h3>MULTIMODAL AGENT</h3>
+            <p>AI 에이전트 아키텍처 설계</p>
+        </div>
+        <div class="node node-cl reveal-text" id="node-cl">
+            <h3>VLM ROBOT</h3>
+            <p>시각 언어 모델 기반 제어</p>
+        </div>
+        <div class="node node-bl reveal-text" id="node-bl">
+            <h3>DEEP LEARNING</h3>
+            <p>데이터 분석 및 모델링</p>
+        </div>
+        <div class="node node-tr reveal-text" id="node-tr">
+            <h3>C / C# / JAVA</h3>
+            <p>객체지향과 시스템 프로그래밍</p>
+        </div>
+        <div class="node node-cr reveal-text" id="node-cr">
+            <h3>PYTHON / KOTLIN</h3>
+            <p>백엔드 및 스크립팅</p>
+        </div>
+        <div class="node node-br reveal-text" id="node-br">
+            <h3>SQL / ORACLE</h3>
+            <p>데이터베이스 설계 및 최적화</p>
+        </div>
+    </section>
+
+    <!-- ===== STRENGTHS ===== -->
+    <section id="strengths" class="section-strengths pink-bg">
+        <div class="strengths-header reveal-text">
+            <span class="section-num" style="color: #050505;">03 — WHAT I BRING</span>
+            <h2 class="giant-text" style="color: #050505;">STRENGTHS</h2>
+        </div>
+
+        <div class="carousel-scene">
+            <div class="ring" id="strengths-ring">
+
+                <div class="cs">
+                    <div class="cw">
+                        <div class="cl"><span></span><span></span><span></span><span></span></div>
+                        <div class="sl"></div>
+                        <div class="co"><span></span><span></span><span></span><span></span></div>
+                        <div class="cp"><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="ci">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f0ff"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7" rx="1" />
+                                <rect x="14" y="3" width="7" height="7" rx="1" />
+                                <rect x="3" y="14" width="7" height="7" rx="1" />
+                                <rect x="14" y="14" width="7" height="7" rx="1" />
+                            </svg>
+                        </div>
+                        <div class="cin">
+                            <div class="cn">01 / DESIGN</div>
+                            <div class="ct">인터랙티브<br>설계</div>
+                            <div class="cd">예술 경험 기반의 동적인 UX 설계. 움직임, 리듬, 공간감을 모두 고려합니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cs">
+                    <div class="cw">
+                        <div class="cl"><span></span><span></span><span></span><span></span></div>
+                        <div class="sl"></div>
+                        <div class="co"><span></span><span></span><span></span><span></span></div>
+                        <div class="cp"><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="ci">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f0ff"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <polyline points="10 9 9 9 8 9" />
+                            </svg>
+                        </div>
+                        <div class="cin">
+                            <div class="cn">02 / PLANNING</div>
+                            <div class="ct">문서화 &amp;<br>기획</div>
+                            <div class="cd">복잡한 기술을 명확한 문서로 정의하고 PM 사이클 전반을 주도합니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cs">
+                    <div class="cw">
+                        <div class="cl"><span></span><span></span><span></span><span></span></div>
+                        <div class="sl"></div>
+                        <div class="co"><span></span><span></span><span></span><span></span></div>
+                        <div class="cp"><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="ci">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f0ff"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                            </svg>
+                        </div>
+                        <div class="cin">
+                            <div class="cn">03 / CREATIVE</div>
+                            <div class="ct">창의적<br>문제 해결</div>
+                            <div class="cd">기술과 예술의 교차점에서 기존 틀을 깨는 독창적인 해결책을 찾아냅니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cs">
+                    <div class="cw">
+                        <div class="cl"><span></span><span></span><span></span><span></span></div>
+                        <div class="sl"></div>
+                        <div class="co"><span></span><span></span><span></span><span></span></div>
+                        <div class="cp"><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="ci">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f0ff"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="4" width="16" height="16" rx="2" />
+                                <rect x="9" y="9" width="6" height="6" />
+                                <line x1="9" y1="1" x2="9" y2="4" />
+                                <line x1="15" y1="1" x2="15" y2="4" />
+                                <line x1="9" y1="20" x2="9" y2="23" />
+                                <line x1="15" y1="20" x2="15" y2="23" />
+                                <line x1="20" y1="9" x2="23" y2="9" />
+                                <line x1="20" y1="14" x2="23" y2="14" />
+                                <line x1="1" y1="9" x2="4" y2="9" />
+                                <line x1="1" y1="14" x2="4" y2="14" />
+                            </svg>
+                        </div>
+                        <div class="cin">
+                            <div class="cn">04 / AI</div>
+                            <div class="ct">AI 에이전트<br>구현</div>
+                            <div class="cd">멀티모달, MCP, VLM 로봇까지 최신 AI 기술을 실제 서비스로 구현합니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="carousel-dots" id="carousel-dots">
+            <button class="cdot active" data-i="0"></button>
+            <button class="cdot" data-i="1"></button>
+            <button class="cdot" data-i="2"></button>
+            <button class="cdot" data-i="3"></button>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="section-footer dark-bg">
+        <a href="../index.html" class="footer-link hover-target">← SEMICOLON; BACK</a>
+        <h2 class="giant-text footer-github hover-target">
+            <a href="https://github.com/hazyala" target="_blank">@HAZYALA</a>
+        </h2>
+        <span class="footer-copy">© 2026 KIM HAEMIN</span>
+    </footer>
+
+    <script>
+        // 1. 반전 커서 (Difference Blend Mode)
+        const cursor = document.querySelector('.custom-cursor');
+        document.querySelectorAll('.hover-target, a').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+        });
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        // 2. 스크롤 Reveal 애니메이션
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal-text').forEach(el => io.observe(el));
+
+        // 3. Three.js — 캔버스를 섹션 전체 배경으로
+        const section = document.querySelector('.section-skills-radial');
+        const canvas = document.getElementById('three-canvas');
+
+        function getSectionSize() {
+            return { w: section.clientWidth, h: section.clientHeight };
+        }
+
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+        const { w: W, h: H } = getSectionSize();
+        renderer.setSize(W, H);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 200);
+        camera.position.z = 11.0;
+
+        // 하트 곡선 함수 (t: 0~2π → x, y 반환)
+        function heartPoint(t, scale) {
+            const x = scale * 16 * Math.pow(Math.sin(t), 3);
+            const y = scale * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+            return { x, y };
+        }
+
+        // 3D 하트 와이어프레임 생성
+        // 위도 방향(슬라이스)와 경도 방향(링) 선으로 구성
+        function createHeart3D(scale, color, opacity, latLines, lngLines) {
+            const group = new THREE.Group();
+            const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity });
+
+            const SEGS = 120; // 각 선의 분할 수
+
+            // ── 경도선(longitude): 하트 윤곽을 z축 회전시킨 면들
+            for (let i = 0; i < lngLines; i++) {
+                const angle = (i / lngLines) * Math.PI * 2;
+                const points = [];
+                for (let j = 0; j <= SEGS; j++) {
+                    const t = (j / SEGS) * Math.PI * 2;
+                    const { x, y } = heartPoint(t, scale);
+                    // x를 angle로 회전시켜 3D로 펼침
+                    points.push(new THREE.Vector3(
+                        x * Math.cos(angle),
+                        y,
+                        x * Math.sin(angle)
+                    ));
+                }
+                const geo = new THREE.BufferGeometry().setFromPoints(points);
+                group.add(new THREE.Line(geo, mat));
+            }
+
+            // ── 위도선(latitude): y 레벨별 하트 단면 타원
+            // y 범위: heartPoint에서 y는 대략 -17*scale ~ 13*scale
+            const yMin = -17 * scale;
+            const yMax = 13 * scale;
+
+            for (let i = 0; i < latLines; i++) {
+                const yTarget = yMin + (i / (latLines - 1)) * (yMax - yMin);
+
+                // 이 y에서의 하트 반지름(x값) 샘플링
+                // heartPoint를 순회하며 yTarget에 가장 가까운 x 반지름 추출
+                // 하트는 y축 대칭이 아니므로 t를 전수조사해서 yTarget 근방 점들의 |x| 최댓값 사용
+                let maxR = 0;
+                for (let j = 0; j <= 400; j++) {
+                    const t = (j / 400) * Math.PI * 2;
+                    const { x, y } = heartPoint(t, scale);
+                    if (Math.abs(y - yTarget) < (yMax - yMin) * 0.035) {
+                        maxR = Math.max(maxR, Math.abs(x));
+                    }
+                }
+                if (maxR < 0.01) continue;
+
+                // 해당 반지름으로 원형 링 생성
+                const points = [];
+                for (let j = 0; j <= SEGS; j++) {
+                    const a = (j / SEGS) * Math.PI * 2;
+                    points.push(new THREE.Vector3(
+                        maxR * Math.cos(a),
+                        yTarget,
+                        maxR * Math.sin(a)
+                    ));
+                }
+                const geo = new THREE.BufferGeometry().setFromPoints(points);
+                group.add(new THREE.Line(geo, mat));
+            }
+
+            return group;
+        }
+
+        // s1: 큰 하트 (기존 radius 4.0 → scale 0.22 정도로 비슷한 크기)
+        const s1 = createHeart3D(0.22, 0xff1493, 0.6, 18, 16);
+        // s2: 바깥 큰 하트 (기존 radius 5.5)
+        const s2 = createHeart3D(0.30, 0xff69b4, 0.2, 14, 12);
+        // s3: 작은 흰 하트 (기존 radius 2.0)
+        const s3 = createHeart3D(0.11, 0xffffff, 0.15, 10, 8);
+        scene.add(s1, s2, s3);
+
+        // 파티클 — 카메라 거리에 맞게 범위·크기 조정
+        const pCount = 3000;
+        const pGeo = new THREE.BufferGeometry();
+        const pPos = new Float32Array(pCount * 3);
+        // 초기 위치를 따로 저장해서 원래 자리 기준으로 움직이게 함
+        const pOrigin = new Float32Array(pCount * 3);
+        for (let i = 0; i < pCount; i++) {
+            const x = (Math.random() - 0.5) * 50;
+            const y = (Math.random() - 0.5) * 50;
+            const z = (Math.random() - 0.5) * 30;
+            pPos[i * 3] = pOrigin[i * 3] = x;
+            pPos[i * 3 + 1] = pOrigin[i * 3 + 1] = y;
+            pPos[i * 3 + 2] = pOrigin[i * 3 + 2] = z;
+        }
+        pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+        const pMat = new THREE.PointsMaterial({ color: 0xff1493, size: 0.12, transparent: true, opacity: 0.6 });
+        const particles = new THREE.Points(pGeo, pMat);
+        scene.add(particles);
+
+        let mouseX = 0, mouseY = 0;
+        section.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        const clock = new THREE.Clock();
+        (function animate() {
+            requestAnimationFrame(animate);
+            const t = clock.getElapsedTime();
+
+            // 구체 회전
+            s1.rotation.y = t * 0.15 + mouseX * 0.3;
+            s1.rotation.x = t * 0.10 - mouseY * 0.3;
+            s2.rotation.y = -t * 0.10 + mouseX * 0.2;
+            s3.rotation.z = t * 0.20;
+
+            // 파티클 — 각 점이 원래 위치 기준으로 부드럽게 유영
+            const pos = pGeo.attributes.position.array;
+            for (let i = 0; i < pCount; i++) {
+                // 파티클마다 다른 위상(i * 0.3)으로 서로 다르게 움직임
+                const phase = i * 0.3;
+                pos[i * 3] = pOrigin[i * 3] + Math.sin(t * 0.4 + phase) * 0.35;
+                pos[i * 3 + 1] = pOrigin[i * 3 + 1] + Math.cos(t * 0.3 + phase * 0.7) * 0.35;
+                pos[i * 3 + 2] = pOrigin[i * 3 + 2] + Math.sin(t * 0.25 + phase * 1.3) * 0.2;
+            }
+            pGeo.attributes.position.needsUpdate = true;
+
+            // 파티클 그룹 전체도 마우스 방향으로 살짝 기울어짐
+            particles.rotation.y = mouseX * 0.06;
+            particles.rotation.x = mouseY * 0.06;
+
+            renderer.render(scene, camera);
+        })();
+
+        // ── SVG 연결선 동적 계산 ──
+        // 섹션 중심 → 각 노드 중심 실시간 연결
+        const skillSvg = document.getElementById('skill-lines');
+        const nodeIds = ['node-tl', 'node-cl', 'node-bl', 'node-tr', 'node-cr', 'node-br'];
+        let svgLines = [];
+
+        // 선 6개 생성
+        nodeIds.forEach(() => {
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('stroke', 'rgba(255,20,147,0.45)');
+            line.setAttribute('stroke-width', '1.5');
+            line.setAttribute('stroke-dasharray', '5 4');
+            line.setAttribute('marker-end', 'url(#dot)');
+            skillSvg.appendChild(line);
+            svgLines.push(line);
+        });
+
+        function updateLines() {
+            const sec = document.querySelector('.section-skills-radial');
+            const sRect = sec.getBoundingClientRect();
+            const cx = sRect.width / 2; // 섹션 기준 중심 X
+            const cy = sRect.height / 2; // 섹션 기준 중심 Y
+
+            skillSvg.setAttribute('width', sRect.width);
+            skillSvg.setAttribute('height', sRect.height);
+            skillSvg.setAttribute('viewBox', `0 0 ${sRect.width} ${sRect.height}`);
+
+            nodeIds.forEach((id, i) => {
+                const node = document.getElementById(id);
+                const nRect = node.getBoundingClientRect();
+                // 섹션 기준 노드 중심 좌표
+                const nx = nRect.left - sRect.left + nRect.width / 2;
+                const ny = nRect.top - sRect.top + nRect.height / 2;
+                svgLines[i].setAttribute('x1', cx);
+                svgLines[i].setAttribute('y1', cy);
+                svgLines[i].setAttribute('x2', nx);
+                svgLines[i].setAttribute('y2', ny);
+            });
+        }
+
+        // 초기 + 리사이즈 시 재계산
+        // reveal 애니메이션 끝난 뒤 정확히 계산되도록 약간 딜레이
+        setTimeout(updateLines, 300);
+        window.addEventListener('resize', () => {
+            const { w, h } = getSectionSize();
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            renderer.setSize(w, h);
+            updateLines();
+        });
+
+        // ── Strengths 3D Carousel ──
+        (function () {
+            const ring = document.getElementById('strengths-ring');
+            if (!ring) return;
+
+            const dots = document.querySelectorAll('.cdot');
+            let angle = 0, animating = true, lastTime = null;
+            const SPEED = 18;
+
+            function setRadius() {
+                // 기존 max 480에서 580으로 반경을 시원하게 넓혔사옵니다.
+                const r = Math.min(Math.max(window.innerWidth * 0.38, 350), 580);
+                document.querySelectorAll('.cs').forEach(c => c.style.setProperty('--ring-r', r + 'px'));
+            }
+            setRadius();
+            window.addEventListener('resize', setRadius);
+
+            function tick(ts) {
+                if (!lastTime) lastTime = ts;
+                const dt = (ts - lastTime) / 1000;
+                lastTime = ts;
+                if (animating) angle += SPEED * dt;
+                ring.style.transform = `rotateY(${angle}deg)`;
+                const idx = (Math.round(-angle / 90) % 4 + 400) % 4;
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+
+            ring.addEventListener('mouseenter', () => { animating = false; });
+            ring.addEventListener('mouseleave', () => { animating = true; lastTime = null; });
+
+            let drag = false, sx = 0, sa = 0;
+            ring.addEventListener('mousedown', e => { drag = true; sx = e.clientX; sa = angle; e.preventDefault(); });
+            window.addEventListener('mousemove', e => { if (!drag) return; angle = sa + (e.clientX - sx) * 0.35; });
+            window.addEventListener('mouseup', () => { drag = false; });
+
+            dots.forEach(d => d.addEventListener('click', () => { angle = -parseInt(d.dataset.i) * 90; }));
+
+            let tx = 0, ta = 0;
+            ring.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ta = angle; }, { passive: true });
+            ring.addEventListener('touchmove', e => { angle = ta + (e.touches[0].clientX - tx) * 0.35; }, { passive: true });
+        })();
+    </script>
+
+</body>
+
+</html>
