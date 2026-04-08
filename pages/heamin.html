@@ -244,7 +244,6 @@
             <button class="cdot" data-i="2"></button>
             <button class="cdot" data-i="3"></button>
         </div>
-        <p class="carousel-hint">DRAG TO ROTATE · HOVER TO PAUSE</p>
     </section>
 
     <footer class="section-footer dark-bg">
@@ -290,15 +289,83 @@
         const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 200);
         camera.position.z = 11.0;
 
-        function createSphere(radius, segments, color, opacity) {
-            const geo = new THREE.SphereGeometry(radius, segments, segments);
-            const mat = new THREE.MeshBasicMaterial({ color, wireframe: true, transparent: true, opacity });
-            return new THREE.Mesh(geo, mat);
+        // 하트 곡선 함수 (t: 0~2π → x, y 반환)
+        function heartPoint(t, scale) {
+            const x = scale * 16 * Math.pow(Math.sin(t), 3);
+            const y = scale * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+            return { x, y };
         }
 
-        const s1 = createSphere(4.0, 16, 0xff1493, 0.6);
-        const s2 = createSphere(5.5, 12, 0xff69b4, 0.2);
-        const s3 = createSphere(2.0, 8, 0xffffff, 0.15);
+        // 3D 하트 와이어프레임 생성
+        // 위도 방향(슬라이스)와 경도 방향(링) 선으로 구성
+        function createHeart3D(scale, color, opacity, latLines, lngLines) {
+            const group = new THREE.Group();
+            const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity });
+
+            const SEGS = 120; // 각 선의 분할 수
+
+            // ── 경도선(longitude): 하트 윤곽을 z축 회전시킨 면들
+            for (let i = 0; i < lngLines; i++) {
+                const angle = (i / lngLines) * Math.PI * 2;
+                const points = [];
+                for (let j = 0; j <= SEGS; j++) {
+                    const t = (j / SEGS) * Math.PI * 2;
+                    const { x, y } = heartPoint(t, scale);
+                    // x를 angle로 회전시켜 3D로 펼침
+                    points.push(new THREE.Vector3(
+                        x * Math.cos(angle),
+                        y,
+                        x * Math.sin(angle)
+                    ));
+                }
+                const geo = new THREE.BufferGeometry().setFromPoints(points);
+                group.add(new THREE.Line(geo, mat));
+            }
+
+            // ── 위도선(latitude): y 레벨별 하트 단면 타원
+            // y 범위: heartPoint에서 y는 대략 -17*scale ~ 13*scale
+            const yMin = -17 * scale;
+            const yMax = 13 * scale;
+
+            for (let i = 0; i < latLines; i++) {
+                const yTarget = yMin + (i / (latLines - 1)) * (yMax - yMin);
+
+                // 이 y에서의 하트 반지름(x값) 샘플링
+                // heartPoint를 순회하며 yTarget에 가장 가까운 x 반지름 추출
+                // 하트는 y축 대칭이 아니므로 t를 전수조사해서 yTarget 근방 점들의 |x| 최댓값 사용
+                let maxR = 0;
+                for (let j = 0; j <= 400; j++) {
+                    const t = (j / 400) * Math.PI * 2;
+                    const { x, y } = heartPoint(t, scale);
+                    if (Math.abs(y - yTarget) < (yMax - yMin) * 0.035) {
+                        maxR = Math.max(maxR, Math.abs(x));
+                    }
+                }
+                if (maxR < 0.01) continue;
+
+                // 해당 반지름으로 원형 링 생성
+                const points = [];
+                for (let j = 0; j <= SEGS; j++) {
+                    const a = (j / SEGS) * Math.PI * 2;
+                    points.push(new THREE.Vector3(
+                        maxR * Math.cos(a),
+                        yTarget,
+                        maxR * Math.sin(a)
+                    ));
+                }
+                const geo = new THREE.BufferGeometry().setFromPoints(points);
+                group.add(new THREE.Line(geo, mat));
+            }
+
+            return group;
+        }
+
+        // s1: 큰 하트 (기존 radius 4.0 → scale 0.22 정도로 비슷한 크기)
+        const s1 = createHeart3D(0.22, 0xff1493, 0.6, 18, 16);
+        // s2: 바깥 큰 하트 (기존 radius 5.5)
+        const s2 = createHeart3D(0.30, 0xff69b4, 0.2, 14, 12);
+        // s3: 작은 흰 하트 (기존 radius 2.0)
+        const s3 = createHeart3D(0.11, 0xffffff, 0.15, 10, 8);
         scene.add(s1, s2, s3);
 
         // 파티클 — 카메라 거리에 맞게 범위·크기 조정
@@ -416,7 +483,8 @@
             const SPEED = 18;
 
             function setRadius() {
-                const r = Math.min(Math.max(window.innerWidth * 0.32, 300), 480);
+                // 기존 max 480에서 580으로 반경을 시원하게 넓혔사옵니다.
+                const r = Math.min(Math.max(window.innerWidth * 0.38, 350), 580);
                 document.querySelectorAll('.cs').forEach(c => c.style.setProperty('--ring-r', r + 'px'));
             }
             setRadius();
